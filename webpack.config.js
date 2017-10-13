@@ -1,3 +1,4 @@
+/* eslint-disable */
 var path = require('path');
 var webpack = require("webpack");
 
@@ -16,7 +17,7 @@ module.exports = {
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress:{
-        warnings: true
+        warnings: false
       }
     })
   ],
@@ -29,6 +30,11 @@ module.exports = {
         query: {
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
       }
     ]
   },
